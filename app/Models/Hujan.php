@@ -46,7 +46,10 @@ class Hujan extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function getStasiunIdAttribute($value) {
+        $value = Stasiun::find($value);
+        return $value['nama'];
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

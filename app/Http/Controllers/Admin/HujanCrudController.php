@@ -43,13 +43,12 @@ class HujanCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'stasiun',
-            'label' => 'Stasiun',
-            'type' => 'select_multiple',
-            'entity' => 'stasiuns', // the method that defines the relationship in your Model
-            'attribute' => 'nama', // foreign key attribute that is shown to user
-            'model' => "App\Models\Stasiun", // foreign key model
-            'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
+           'label' => "Stasiun",
+           'type' => 'select2',
+           'name' => 'stasiun_id', // the db column for the foreign key
+           'entity' => 'stasiun', // the method that defines the relationship in your Model
+           'attribute' => 'nama', // foreign key attribute that is shown to user
+           'model' => "App\Models\Stasiun", // foreign key model
 
            // optional
            'options'   => (function ($query) {
@@ -75,12 +74,77 @@ class HujanCrudController extends CrudController
             'type' => 'text',
         ]);
 
+        $columns = [
+            [
+                'name' => 'tanggal',
+                'label' => 'Tanggal'
+            ], [
+                'name' => 'stasiun_id',
+                'label' => 'Stasiun'
+            ], [
+                'name' => 'total',
+                'label' => 'Jumlah Hujan'
+            ], [
+                'name' => 'keterangan',
+                'label' => 'Keterangan'
+            ], [
+                'name' => 'petugas',
+                'label' => 'Petugas'
+            ]
+        ];
+        $this->crud->addColumns($columns); 
+
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();
 
         // add asterisk for fields that are required in HujanRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
+
+        $this->crud->addFilter([ // daterange filter
+           'type' => 'date_range',
+           'name' => 'tanggal',
+           'label'=> 'Tanggal'
+         ],
+         true,
+         function($value) { // if the filter is active, apply these constraints
+           $dates = json_decode($value);
+           $this->crud->addClause('where', 'tanggal', '>=', $dates->from);
+           $this->crud->addClause('where', 'tanggal', '<=', $dates->to . ' 23:59:59');
+         });
+
+        //filter hujan
+        //
+        $this->crud->addFilter([
+          'name' => 'total',
+          'type' => 'range',
+          'label'=> 'Hujan',
+          'label_from' => 'min ',
+          'label_to' => 'max '
+        ],
+        true,
+        function($value) { // if the filter is active
+                    $range = json_decode($value);
+                    if ($range->from) {
+                        $this->crud->addClause('where', 'total', '>=', (float) $range->from);
+                    }
+                    if ($range->to) {
+                        $this->crud->addClause('where', 'total', '<=', (float) $range->to);
+                    }
+        });
+// filter nama stasiun
+    // $this->crud->addFilter([ // select2_ajax filter
+    //     'name' => 'stasiun_id',
+    //     'type' => 'select2_ajax',
+    //     'label'=> 'Stasiun',
+    //     'placeholder' => 'Pilih Stasiun'
+    // ],
+    //     url('admin/hujan/ajax-stasiun-options'), // the ajax route
+    //     function($value) { // if the filter is active
+    //         $this->crud->addClause('where', 'stasiun_id', $value);
+    // });
+        //export
+        $this->crud->enableExportButtons();
     }
 
     public function store(StoreRequest $request)
@@ -100,4 +164,10 @@ class HujanCrudController extends CrudController
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
     }
+
+    // public function stasiunOptions(Request $request) {
+    //   $term = $request->input('term');
+    //   $options = App\Models\Stasiun::where('nama', 'like', '%'.$term.'%')->get()->pluck('nama', 'id');
+    //   return $options;
+    // }
 }

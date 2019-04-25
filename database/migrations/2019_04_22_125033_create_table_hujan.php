@@ -16,7 +16,7 @@ class CreateTableHujan extends Migration
         Schema::create('hujans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('tanggal');
-            $table->string('stasiun_id')->nullable();
+            $table->integer('stasiun_id')->unsigned()->nullable();
             $table->string('total')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('petugas');

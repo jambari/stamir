@@ -12,5 +12,6 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     CRUD::resource('stasiun', 'StasiunCrudController');
+	Route::get('hujan/ajax-stasiun-options', 'HujanCrudController@stasiunOptions'); //filter stasiun
     CRUD::resource('hujan', 'HujanCrudController');
 }); // this should be the absolute last line of this file

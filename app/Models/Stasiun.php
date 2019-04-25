@@ -53,7 +53,7 @@ class Stasiun extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function hujan()
+    public function hujans()
     {
         return $this->hasMany('App\Models\Hujan');  
     }
