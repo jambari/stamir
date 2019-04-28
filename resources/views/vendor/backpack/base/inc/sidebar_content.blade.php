@@ -9,8 +9,12 @@
 		<li><a href='{{ backpack_url('hujan') }}'><i class='wi wi-raindrops' style="margin-right: 1em;" ></i> <span>Hujan</span></a></li>
 	</ul>
 </li>
+<li><a href='{{ backpack_url('agm1a') }}'><i class='fa fa-tag'></i> <span>AgM1a</span></a></li>
+<li><a href='{{ backpack_url('agm1b') }}'><i class='fa fa-tag'></i> <span>AgM1b</span></a></li>
 {{-- elfinder --}}
-<li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li>
+{{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
+
+
 
 
 
