@@ -11,8 +11,17 @@
 </li>
 <li><a href='{{ backpack_url('agm1a') }}'><i class='fa fa-tag'></i> <span>AgM1a</span></a></li>
 <li><a href='{{ backpack_url('agm1b') }}'><i class='fa fa-tag'></i> <span>AgM1b</span></a></li>
+<li class="treeview">
+	<a href="#"><i class="fa fa-list"></i> <span>Metadata</span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href='{{ backpack_url('alat') }}'><i class='fa fa-folder'></i> <span>Alat</span></a></li>
+		<li><a href='{{ backpack_url('calibration') }}'><i class='fa fa-folder'></i> <span>Kalibrasi</span></a></li>
+	</ul>
+</li>
 {{-- elfinder --}}
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
+
+
 
 
 

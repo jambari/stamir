@@ -25,7 +25,7 @@ class Agm1aCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Agm1a');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/agm1a');
-        $this->crud->setEntityNameStrings('agm1a', 'agm1as');
+        $this->crud->setEntityNameStrings('AgM1a', 'Daftar AgM1a');
 
         /*
         |--------------------------------------------------------------------------

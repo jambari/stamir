@@ -16,4 +16,6 @@ Route::group([
     CRUD::resource('hujan', 'HujanCrudController');
     CRUD::resource('agm1a', 'Agm1aCrudController');
     CRUD::resource('agm1b', 'Agm1bCrudController');
+    CRUD::resource('alat', 'AlatCrudController');
+    CRUD::resource('calibration', 'CalibrationCrudController');
 }); // this should be the absolute last line of this file
