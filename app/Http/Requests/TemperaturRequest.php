@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class Agm1bRequest extends FormRequest
+class TemperaturRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,11 @@ class Agm1bRequest extends FormRequest
     public function rules()
     {
         return [
-            'tanggal' => 'required|date'
+            'jam' => 'required|numeric',
+            'bola_basah' => 'required|numeric',
+            'bola_kering' => 'required|numeric',
+            'tanggal' => 'required|date',
+            'rumput' => 'required|numeric'
         ];
     }
 

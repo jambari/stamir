@@ -9,8 +9,19 @@
 		<li><a href='{{ backpack_url('hujan') }}'><i class='wi wi-raindrops' style="margin-right: 1em;" ></i> <span>Hujan</span></a></li>
 	</ul>
 </li>
-<li><a href='{{ backpack_url('agm1a') }}'><i class='fa fa-tag'></i> <span>AgM1a</span></a></li>
-<li><a href='{{ backpack_url('agm1b') }}'><i class='fa fa-tag'></i> <span>AgM1b</span></a></li>
+
+<li class="treeview">
+	<a href="#"><i class="fa fa-list"></i> <span>AgM1a</span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href='{{ backpack_url('temperatur') }}'><i class='fa fa-tag'></i> <span>Temperatur</span></a></li>
+		<li><a href='{{ backpack_url('nisbi') }}'><i class='fa fa-tag'></i> <span>Lembab Nisbi</span></a></li>
+		<li><a href='{{ backpack_url('angin') }}'><i class='fa fa-tag'></i> <span>Angin</span></a></li>
+		<li><a href='{{ backpack_url('penyinaran') }}'><i class='fa fa-tag'></i> <span>Penyinaran</span></a></li>
+	</ul>
+</li>
+
+
+
 <li class="treeview">
 	<a href="#"><i class="fa fa-list"></i> <span>Metadata</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
@@ -20,6 +31,10 @@
 </li>
 {{-- elfinder --}}
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
+
+
+
+
 
 
 

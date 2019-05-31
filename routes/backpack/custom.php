@@ -14,8 +14,10 @@ Route::group([
     CRUD::resource('stasiun', 'StasiunCrudController');
 	Route::get('hujan/ajax-stasiun-options', 'HujanCrudController@stasiunOptions'); //filter stasiun
     CRUD::resource('hujan', 'HujanCrudController');
-    CRUD::resource('agm1a', 'Agm1aCrudController');
-    CRUD::resource('agm1b', 'Agm1bCrudController');
     CRUD::resource('alat', 'AlatCrudController');
     CRUD::resource('calibration', 'CalibrationCrudController');
+    CRUD::resource('temperatur', 'TemperaturCrudController');
+    CRUD::resource('nisbi', 'NisbiCrudController');
+    CRUD::resource('angin', 'AnginCrudController');
+    CRUD::resource('penyinaran', 'PenyinaranCrudController');
 }); // this should be the absolute last line of this file
