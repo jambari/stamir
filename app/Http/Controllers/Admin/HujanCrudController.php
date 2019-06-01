@@ -25,7 +25,7 @@ class HujanCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Hujan');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/hujan');
-        $this->crud->setEntityNameStrings('hujan', 'hujans');
+        $this->crud->setEntityNameStrings('hujan', 'semua hujan');
 
         /*
         |--------------------------------------------------------------------------

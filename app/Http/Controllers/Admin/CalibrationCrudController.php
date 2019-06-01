@@ -25,7 +25,7 @@ class CalibrationCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Calibration');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/calibration');
-        $this->crud->setEntityNameStrings('calibration', 'calibrations');
+        $this->crud->setEntityNameStrings('kalibrasi', 'kalibrasi');
 
         /*
         |--------------------------------------------------------------------------

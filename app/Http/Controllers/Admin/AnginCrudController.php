@@ -25,7 +25,7 @@ class AnginCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Angin');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/angin');
-        $this->crud->setEntityNameStrings('angin', 'angins');
+        $this->crud->setEntityNameStrings('angin', 'angin');
 
         /*
         |--------------------------------------------------------------------------

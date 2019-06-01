@@ -13,13 +13,20 @@
 <li class="treeview">
 	<a href="#"><i class="fa fa-list"></i> <span>AgM1a</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
-		<li><a href='{{ backpack_url('temperatur') }}'><i class='fa fa-tag'></i> <span>Temperatur</span></a></li>
-		<li><a href='{{ backpack_url('nisbi') }}'><i class='fa fa-tag'></i> <span>Lembab Nisbi</span></a></li>
-		<li><a href='{{ backpack_url('angin') }}'><i class='fa fa-tag'></i> <span>Angin</span></a></li>
-		<li><a href='{{ backpack_url('penyinaran') }}'><i class='fa fa-tag'></i> <span>Penyinaran</span></a></li>
+		<li><a href='{{ backpack_url('temperatur') }}'><i class='wi wi-thermometer'></i> <span>Temperatur</span></a></li>
+		<li><a href='{{ backpack_url('nisbi') }}'><i class='wi wi-humidity'></i> <span>Lembab Nisbi</span></a></li>
+		<li><a href='{{ backpack_url('angin') }}'><i class='wi wi-windy'></i> <span>Angin</span></a></li>
+		<li><a href='{{ backpack_url('penyinaran') }}'><i class='wi wi-day-sunny'></i> <span>Penyinaran</span></a></li>
 	</ul>
 </li>
 
+<li class="treeview">
+	<a href="#"><i class="fa fa-list"></i> <span>AgM1b</span> <i class="fa fa-angle-left pull-right"></i></a>
+	<ul class="treeview-menu">
+		<li><a href='{{ backpack_url('gundul') }}'><i class='wi wi-thermometer-exterior'></i> <span>Temperatur Tanah Gundul</span></a></li>
+		<li><a href='{{ backpack_url('trumput') }}'><i class='wi wi-thermometer-exterior'></i> <span>Temperatur Tanah Berumput</span></a></li>
+	</ul>
+</li>
 
 
 <li class="treeview">
@@ -31,14 +38,3 @@
 </li>
 {{-- elfinder --}}
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
-
-
-
-
-
-
-
-
-
-
-

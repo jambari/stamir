@@ -25,7 +25,7 @@ class StasiunCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Stasiun');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/stasiun');
-        $this->crud->setEntityNameStrings('stasiun', 'stasiuns');
+        $this->crud->setEntityNameStrings('stasiun', 'stasiun');
 
         /*
         |--------------------------------------------------------------------------

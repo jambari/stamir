@@ -20,4 +20,6 @@ Route::group([
     CRUD::resource('nisbi', 'NisbiCrudController');
     CRUD::resource('angin', 'AnginCrudController');
     CRUD::resource('penyinaran', 'PenyinaranCrudController');
+    CRUD::resource('gundul', 'GundulCrudController');
+    CRUD::resource('trumput', 'TrumputCrudController');
 }); // this should be the absolute last line of this file

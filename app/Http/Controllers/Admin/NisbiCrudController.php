@@ -25,7 +25,7 @@ class NisbiCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Nisbi');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/nisbi');
-        $this->crud->setEntityNameStrings('nisbi', 'nisbis');
+        $this->crud->setEntityNameStrings('Lembab Nisbi ', 'Lembab Nisbi');
 
         /*
         |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ class NisbiCrudController extends CrudController
             'type' => 'select_from_array',
             'options' => ['7' => '07.00 W.S', '14' => '14.00 W.S', '18'=>'18.00 W.S']
         ]);
-
+        $this->crud->addColumns(['tanggal','lembab_nisbi', 'jam']);
         // add asterisk for fields that are required in NisbiRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');

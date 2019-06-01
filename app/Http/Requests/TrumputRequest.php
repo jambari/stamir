@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class NisbiRequest extends FormRequest
+class TrumputRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,12 @@ class NisbiRequest extends FormRequest
     public function rules()
     {
         return [
+            // 'name' => 'required|min:5|max:255'
             'tanggal' => 'required|date',
-            'lembab_nisbi' => 'required|numeric',
-            'jam' => 'required'
+            'lima' => 'required|numeric',
+            'sepuluh' => 'required|numeric',
+            'duapuluh' => 'required|numeric',
+            'jam' => 'required|string',
         ];
     }
 

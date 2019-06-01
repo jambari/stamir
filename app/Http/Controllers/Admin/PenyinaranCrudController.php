@@ -25,7 +25,7 @@ class PenyinaranCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Penyinaran');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/penyinaran');
-        $this->crud->setEntityNameStrings('penyinaran', 'penyinarans');
+        $this->crud->setEntityNameStrings('Sinar Matahari', 'Sinar Matahari');
 
         /*
         |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class PenyinaranCrudController extends CrudController
             'label' => 'Sinar Matahari',
             'type' => 'text'
         ]);
-
+        $this->crud->addColumns(['tanggal', 'sinar']);
         $this->crud->setColumnDetails('sinar', ['label'=>'Sinar Matahari']);
         // add asterisk for fields that are required in PenyinaranRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
