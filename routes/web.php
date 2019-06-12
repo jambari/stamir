@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return redirect('/admin');
 });
+Route::get('importpage', 'HomeController@importpage');

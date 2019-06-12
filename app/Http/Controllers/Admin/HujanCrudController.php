@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use App\Imports\HujansImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\HujanRequest as StoreRequest;
@@ -170,4 +172,9 @@ class HujanCrudController extends CrudController
     //   $options = App\Models\Stasiun::where('nama', 'like', '%'.$term.'%')->get()->pluck('nama', 'id');
     //   return $options;
     // }
+    public function import() 
+    {
+        Excel::import(new HujansImport, request()->file('hujan'));
+        return redirect('/hujan')->with('success', 'Data berhasil terimport!');
+    }
 }
