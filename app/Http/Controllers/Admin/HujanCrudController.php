@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Imports\HujansImport;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
 use App\Http\Requests\HujanRequest as StoreRequest;
 use App\Http\Requests\HujanRequest as UpdateRequest;
+use Illuminate\Http\Request;
 use Backpack\CRUD\CrudPanel;
 
+use App\Models\Hujan;
 /**
  * Class HujanCrudController
  * @package App\Http\Controllers\Admin
@@ -46,16 +48,8 @@ class HujanCrudController extends CrudController
 
         $this->crud->addField([
            'label' => "Stasiun",
-           'type' => 'select2',
-           'name' => 'stasiun_id', // the db column for the foreign key
-           'entity' => 'stasiun', // the method that defines the relationship in your Model
-           'attribute' => 'nama', // foreign key attribute that is shown to user
-           'model' => "App\Models\Stasiun", // foreign key model
-
-           // optional
-           'options'   => (function ($query) {
-                return $query->orderBy('nama', 'ASC')->get();
-            }), // force the related options to be a custom query, instead of all(); you 
+           'type' => 'text',
+           'name' => 'stasiun'// force the related options to be a custom query, instead of all(); you 
         ]);
 
         $this->crud->addField([
@@ -64,34 +58,16 @@ class HujanCrudController extends CrudController
             'type' => 'text',
         ]);
 
-        $this->crud->addField([
-            'name' => 'keterangan',
-            'label' => 'Keterangan',
-            'type' => 'text',
-        ]);
-
-        $this->crud->addField([
-            'name' => 'petugas',
-            'label' => 'Petugas',
-            'type' => 'text',
-        ]);
-
         $columns = [
             [
                 'name' => 'tanggal',
                 'label' => 'Tanggal'
             ], [
-                'name' => 'stasiun_id',
+                'name' => 'stasiun',
                 'label' => 'Stasiun'
             ], [
                 'name' => 'total',
                 'label' => 'Jumlah Hujan'
-            ], [
-                'name' => 'keterangan',
-                'label' => 'Keterangan'
-            ], [
-                'name' => 'petugas',
-                'label' => 'Petugas'
             ]
         ];
         $this->crud->addColumns($columns); 
@@ -147,6 +123,8 @@ class HujanCrudController extends CrudController
     // });
         //export
         $this->crud->enableExportButtons();
+
+    $this->crud->orderBy('id', 'desc');
     }
 
     public function store(StoreRequest $request)
@@ -172,9 +150,21 @@ class HujanCrudController extends CrudController
     //   $options = App\Models\Stasiun::where('nama', 'like', '%'.$term.'%')->get()->pluck('nama', 'id');
     //   return $options;
     // }
-    public function import() 
+    public function import(Request $request) 
     {
-        Excel::import(new HujansImport, request()->file('hujan'));
-        return redirect('/hujan')->with('success', 'Data berhasil terimport!');
+        //Validasi tipe data
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        //Ambil file yang terupload
+        $file = $request->file('file'); 
+        //buat nama file sembarang
+        $nama_file = rand().$file->getClientOriginalName();
+        // menaruh fil di folder public
+        $file->move('uploads',$nama_file);
+        //mengimport ke database
+        Excel::import(new HujansImport, public_path('/uploads/'.$nama_file));
+        \Alert::success(trans('backpack::crud.insert_success'))->flash();
+        return redirect('/admin/hujan')->with('success', 'Data berhasil terimport!');
     }
 }

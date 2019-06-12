@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Hujan;
+use App\Models\Hujan;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 
@@ -14,11 +14,17 @@ class HujansImport implements ToModel
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
+
     {
+
+        // $rules = array(
+        //   'hujan' => 'required'|'mimes:xls,xlsx,ods,ots,csv'
+        // );
+
         return new Hujan([
-           'name'     => $row[0],
-           'email'    => $row[1], 
-           'password' => Hash::make($row[2]),
+           'tanggal'     => $row[0],
+           'stasiun'    => $row[1], 
+           'total' => $row[2]
         ]);
     }
 }

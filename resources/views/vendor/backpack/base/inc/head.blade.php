@@ -42,7 +42,7 @@
     @endforeach
 @endif
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js" integrity="sha256-qSIshlknROr4J8GMHRlW3fGKrPki733tLq+qeMCR05Q=" crossorigin="anonymous"></script>
 @yield('after_styles')
 @stack('after_styles')
 

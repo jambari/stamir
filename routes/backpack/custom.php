@@ -22,6 +22,6 @@ Route::group([
     CRUD::resource('penyinaran', 'PenyinaranCrudController');
     CRUD::resource('gundul', 'GundulCrudController');
     CRUD::resource('trumput', 'TrumputCrudController');
-    Route::get('importpage', 'ImportCrudController@importpage'); //import page for all models
-    Route::get('import-hujan', 'HujanCrudController@import'); //import page for all models
+    Route::get('importpage-hujan', 'ImportCrudController@importpageHujan'); //import page for all models
+    Route::post('import-hujan', 'HujanCrudController@import'); //import page for all models
 }); // this should be the absolute last line of this file

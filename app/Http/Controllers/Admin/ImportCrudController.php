@@ -58,7 +58,9 @@ class ImportCrudController extends CrudController
     //     // use $this->data['entry'] or $this->crud->entry
     //     return $redirect_location;
     // }
-    public function importpage () {
-        return view('importpage');
+    public function importpageHujan () {
+        $unsur = 'Data Hujan';
+        $kolom = 'Tanggal | Stasiun | total';
+        return view('imports.importpage')->with(compact('unsur', 'kolom'));
     }
 }

@@ -19,7 +19,7 @@ class Hujan extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal', 'stasiun_id', 'total', 'keterangan', 'petugas'];
+    protected $fillable = ['tanggal', 'stasiun', 'total'];
     // protected $hidden = [];
     // protected $dates = [];
 

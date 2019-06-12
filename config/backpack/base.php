@@ -15,8 +15,8 @@ return [
     'project_name' => 'Stamir',
 
     // Menu logos
-    'logo_lg'   => '<b>Sistem</b>Stamir',
-    'logo_mini' => '<b>S</b>s',
+    'logo_lg'   => '<b>Sistem</b>Adit',
+    'logo_mini' => '<b>Si</b>A',
 
     // Developer or company name. Shown in footer.
     'developer_name' => 'Jambari',
