@@ -23,8 +23,10 @@ Route::group([
     CRUD::resource('gundul', 'GundulCrudController');
     CRUD::resource('trumput', 'TrumputCrudController');
     //Import Excel Section
-    Route::get('importpage-hujan', 'ImportCrudController@importpageHujan'); //import page for all models
+    Route::get('importpage-hujan', 'ImportCrudController@importpageHujan'); //import page for hujan
     Route::post('import-hujan', 'HujanCrudController@import'); //import data hujan route
-    Route::get('importpage-temperatur', 'ImportCrudController@importpageTemperatur'); //import page for all models
+    Route::get('importpage-temperatur', 'ImportCrudController@importpageTemperatur'); //import page for temperatur
     Route::post('import-temperatur', 'TemperaturCrudController@import'); //import data temperatur route
+    Route::get('importpage-nisbi', 'ImportCrudController@importpageNisbi'); //import page for nisbi
+    Route::post('import-nisbi', 'NisbiCrudController@import'); //import data temperatur route
 }); // this should be the absolute last line of this file

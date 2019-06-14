@@ -16,4 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/dashboard', 'DashboardController@index'); //to dashboard page
-Route::get('importpage', 'HomeController@importpage');
+//Route::get('importpage', 'HomeController@importpage');

@@ -68,7 +68,15 @@ class ImportCrudController extends CrudController
     public function importpageTemperatur () {
         $route = '/admin/import-temperatur';
         $unsur = 'Data Temperatur';
-        $kolom = 'Tanggal dengan format (YYYY-MM-DD, contoh: 2019-05-23)| BB | BB |Temperatur rumput | Jam (contoh: 07.00, 14.00, 18.00)';
+        $kolom = 'Tanggal dengan format (YYYY-MM-DD, contoh: 2019-05-23)| BK | BB |Temperatur rumput | Jam (contoh: 07.00, 14.00, 18.00)';
+        return view('imports.importpage')->with(compact('unsur', 'kolom', 'route'));
+    }
+
+    //Method for import Nisbi
+    public function importpageNisbi () {
+        $route = '/admin/import-nisbi';
+        $unsur = 'Data Lembab Nisbi';
+        $kolom = 'Tanggal dengan format (YYYY-MM-DD, contoh: 2019-05-23)| Lembab Nisbi | Jam (contoh: 07.00, 14.00, 18.00)';
         return view('imports.importpage')->with(compact('unsur', 'kolom', 'route'));
     }
 }
