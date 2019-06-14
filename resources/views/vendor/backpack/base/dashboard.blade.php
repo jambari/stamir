@@ -368,4 +368,311 @@
             </div>
         </div>
     </div>
+{{-- WAPEKO --}}
+{{-- Stasiun Wapeko --}}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <div class="box-title">Stasiun Wapeko</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="wapeko-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("wapeko-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['wapeko'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: 'red',
+                            backgroundColor : 'lightred',
+                            fill: true,
+                            data: [
+                                @foreach($data['wapeko'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+        {{-- End Of Stasiun Okaba --}}
+        <div class="col-md-6">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <div class="box-title">Stasiun Wonorejo</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="wonorejo-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("wonorejo-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['wonorejo'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: '#red',
+                            backgroundColor : 'lightred',
+                            fill: true,
+                            data: [
+                                @foreach($data['wonorejo'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{{-- Iwaka --}}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-danger box-solid" style="border: 1px solid #635FA9;" >
+                <div class="box-header with-border" style="background-color: #635FA9;">
+                    <div class="box-title">Stasiun Iwaka</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="iwaka-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("iwaka-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['iwaka'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: '#635FA9',
+                            backgroundColor : '',
+                            fill: true,
+                            data: [
+                                @foreach($data['iwaka'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+        {{-- End Of Stasiun Iwaka --}}
+        <div class="col-md-6">
+            <div class="box box-danger box-solid" style="border: 1px solid #635FA9;" >
+                <div class="box-header with-border" style="background-color: #635FA9;">
+                    <div class="box-title">Stasiun Kepi</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="kepi-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("kepi-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['kepi'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: '#635FA9',
+                            backgroundColor : '',
+                            fill: true,
+                            data: [
+                                @foreach($data['kepi'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+{{-- Stasiun Amun Kay --}}
+    <div class="row">
+        <div class="col-md-6" >
+            <div class="box box-danger box-solid" style="border: 1px solid #05665d;" >
+                <div class="box-header with-border" style="background-color: #05665d;">
+                    <div class="box-title">Stasiun Amun Kay</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="amun-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("amun-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['amunkay'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: '#05665d',
+                            backgroundColor : '',
+                            fill: true,
+                            data: [
+                                @foreach($data['amunkay'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+        {{-- End Of Stasiun Okaba --}}
+        <div class="col-md-6">
+            <div class="box box-danger box-solid" style="border: 1px solid #05665d;" >
+                <div class="box-header with-border" style="background-color: #05665d;">
+                    <div class="box-title">Stasiun Semangga</div>
+                        <div class="box-tools">
+                          <!-- This will cause the box to be removed when clicked -->
+                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                          <!-- This will cause the box to collapse when clicked -->
+                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                </div>
+
+                <div class="box-body">
+                <canvas id="semangga-chart" width="800" height="450"></canvas>
+                    <script>
+                        new Chart(document.getElementById("semangga-chart"), {
+                        type: 'line',
+                        data: {
+                        labels: [
+                                @foreach($data['semangga'] as $hujan)
+                                    "{{ $hujan['tanggal'] }}",
+                                @endforeach
+                            ],
+                        datasets: [
+                            {
+                            label: "Hujan",
+                            borderColor: '#05665d',
+                            backgroundColor : '',
+                            fill: true,
+                            data: [
+                                @foreach($data['semangga'] as $hujan)
+                                    "{{ $hujan['total'] }}",
+                                @endforeach
+                            ]
+                            }
+                        ]
+                        },
+                        options: {
+                        legend: { display: false },
+                        title: {
+                            display: true,
+                            text: 'Hujan 30 Hari Terakhir (mm)'
+                        }
+                        }
+                    });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop

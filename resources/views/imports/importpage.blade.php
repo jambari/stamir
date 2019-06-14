@@ -18,10 +18,10 @@
                 </div>
 
                 <div class="box-body">
-                	<div class="alert alert-warning">
+                	<div class="alert alert-info">
 					  Urutan Kolom pada berkas adalah sebagai berikut : <br>
 					  <strong> {{ $kolom }}</strong> <br>
-					  Nama kolom tidak perlu dicantumkan, berkas hanya berisi data dengan urutan sperti di atas.
+					  Nama kolom tidak perlu dicantumkan, berkas hanya berisi data dengan urutan seperti di atas.
 					</div>
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">

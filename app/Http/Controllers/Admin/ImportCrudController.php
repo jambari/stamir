@@ -59,8 +59,16 @@ class ImportCrudController extends CrudController
     //     return $redirect_location;
     // }
     public function importpageHujan () {
+        $route = '/admin/import-hujan';
         $unsur = 'Data Hujan';
-        $kolom = 'Tanggal | Stasiun | total';
-        return view('imports.importpage')->with(compact('unsur', 'kolom'));
+        $kolom = 'Tanggal dengan format (YYYY-MM-DD, contoh: 2019-05-23) | Stasiun | total';
+        return view('imports.importpage')->with(compact('unsur', 'kolom','route'));
+    }
+    //Method for import Temperatur
+    public function importpageTemperatur () {
+        $route = '/admin/import-temperatur';
+        $unsur = 'Data Temperatur';
+        $kolom = 'Tanggal dengan format (YYYY-MM-DD, contoh: 2019-05-23)| BB | BB |Temperatur rumput | Jam (contoh: 07.00, 14.00, 18.00)';
+        return view('imports.importpage')->with(compact('unsur', 'kolom', 'route'));
     }
 }

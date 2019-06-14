@@ -88,7 +88,7 @@
 }
 </style>
 @endsection
-<form method="POST" action="/admin/import-hujan" enctype="multipart/form-data">
+<form method="POST" action="{{ $route }}" enctype="multipart/form-data">
     {{ csrf_field() }}
   <div class="form-group">
  		<span class="control-fileupload">

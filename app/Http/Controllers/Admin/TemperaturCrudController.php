@@ -8,6 +8,9 @@ use Backpack\CRUD\app\Http\Controllers\CrudController;
 use App\Http\Requests\TemperaturRequest as StoreRequest;
 use App\Http\Requests\TemperaturRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
+use Illuminate\Http\Request;
+use App\Imports\TemperatursImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 /**
  * Class TemperaturCrudController
@@ -65,5 +68,24 @@ class TemperaturCrudController extends CrudController
         // your additional operations after save here
         // use $this->data['entry'] or $this->crud->entry
         return $redirect_location;
+    }
+
+    //Import Excel for Temperatur
+    public function import(Request $request) 
+    {
+        //Validasi tipe data
+        $this->validate($request, [
+            'file' => 'required|mimes:csv,xls,xlsx,ods'
+        ]);
+        //Ambil file yang terupload
+        $file = $request->file('file'); 
+        //buat nama file sembarang
+        $nama_file = rand().$file->getClientOriginalName();
+        // menaruh fil di folder public
+        $file->move('uploads',$nama_file);
+        //mengimport ke database
+        Excel::import(new TemperatursImport, public_path('/uploads/'.$nama_file));
+        \Alert::success(trans('backpack::crud.insert_success'))->flash();
+        return redirect('/admin/temperatur')->with('success', 'Data berhasil terimport!');
     }
 }

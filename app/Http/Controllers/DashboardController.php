@@ -14,7 +14,7 @@ class DashboardController extends Controller
     
     	//Ambil data hujan 30 hari terakhir di Stasiun Tanah Miring
     	$tanahmiring = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', 'tanahmiring%')
+                    ->where('stasiun', 'like', '%staklim%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Met Merauke
@@ -42,6 +42,34 @@ class DashboardController extends Controller
                     ->where('stasiun', 'like', '%atsj%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
+        //Ambil data hujan 30 hari terakhir di Stasiun Wapeko
+        $wapeko = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%wapeko%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        //Ambil data hujan 30 hari terakhir di Stasiun Wapeko
+        $wonorejo = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%wonorejo%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        //Ambil data hujan 30 hari terakhir di Stasiun Iwaka
+        $iwaka = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%iwaka%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        //Ambil data hujan 30 hari terakhir di Stasiun Kepi
+        $kepi = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%kepi%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        $amunkay = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%amun%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
+        $semangga = Hujan::select(['tanggal','total'])
+                    ->where('stasiun', 'like', '%semangga%')
+                    ->orderBy('tanggal','desc')
+                    ->take(30)->get();
         $totalrains = DB::table('hujans')->count();
         $totaltemps = DB::table('temperaturs')->count();
         $totalwinds = DB::table('angins')->count();
@@ -58,6 +86,12 @@ class DashboardController extends Controller
             'okaba' => $okaba,
             'agats' => $agats,
             'atsj' => $atsj,
+            'wapeko' => $wapeko,
+            'wonorejo' => $wonorejo,
+            'iwaka' => $iwaka,    
+            'kepi' => $kepi,  
+            'amunkay' => $amunkay,    
+            'semangga' => $semangga,         
         ];
 
         return view('vendor.backpack.base.dashboard')->with(compact('data'));
