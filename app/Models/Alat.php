@@ -58,6 +58,11 @@ class Alat extends Model
         return $this->hasMany('App\Models\Calibration');
     }
 
+    public function bolakering()
+    {
+        return $this->hasMany('App\Models\Bolakring');
+    }
+
     public function stasiun()
     {
         return $this->belongsTo('App\Models\Stasiun');

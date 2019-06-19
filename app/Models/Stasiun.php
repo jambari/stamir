@@ -61,4 +61,8 @@ class Stasiun extends Model
     {
         return $this->hasMany('App\Models\Alat');    
     }
+    public function bolakering()
+    {
+        return $this->hasMany('App\Models\Bolakring');
+    }
 }
