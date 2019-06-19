@@ -26,10 +26,13 @@ class StasiunRequest extends FormRequest
     public function rules()
     {
         return [
+            'kode_stasiun' => 'required',
+            'jenis_stasiun' => 'required',
+            'nomor_stasiun' => 'required|numeric',
+            'zom' => 'required|numeric',
             'provinsi' => 'required|min:5|max:255',
             'kabupaten' => 'required|min:5|max:255',
-            'kecamatan' => 'required|min:5|max:255',
-            'nama' => 'required|min:5|max:255',
+            'nama_stasiun' => 'required',
             'lintang' => 'required|numeric',
             'bujur' => 'required|numeric'
         ];

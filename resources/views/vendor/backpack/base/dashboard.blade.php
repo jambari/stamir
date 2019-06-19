@@ -36,7 +36,7 @@
                 <div class="info-box-content">
                     <span class="info-box-text">Temperatur</span>
                     <span class="info-box-number">
-                        {{ $data['totaltemps'] }} terentri
+                        {{-- {{ $data['totaltemps'] }} terentri --}}
                     </span>
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
@@ -46,7 +46,7 @@
                 <span class="info-box-icon"><span class="wi wi-wind-direction"></span></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Angin</span>
-                    <span class="info-box-number">{{ $data['totalwinds'] }} terentri</span>
+                    {{-- <span class="info-box-number">{{ $data['totalwinds'] }} terentri</span> --}}
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>
@@ -55,7 +55,7 @@
                 <span class="info-box-icon"><span class="wi wi-humidity"></span></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Lembab Nisbi</span>
-                    <span class="info-box-number">{{ $data['totalnisbis'] }} terentri</span>
+                    {{-- <span class="info-box-number">{{ $data['totalnisbis'] }} terentri</span> --}}
                 </div><!-- /.info-box-content -->
             </div><!-- /.info-box -->
         </div>

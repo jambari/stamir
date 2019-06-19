@@ -17,6 +17,7 @@ class CreateCalibrationTable extends Migration
             $table->bigIncrements('id');
             $table->integer('alat_id')->unsigned()->nullable();
             $table->date('tanggal');
+            $table->string('keterangan');
             $table->string('oleh');
             $table->string('foto1')->nullable();
             $table->string('foto2')->nullable();

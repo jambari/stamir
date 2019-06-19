@@ -26,12 +26,23 @@ class AlatRequest extends FormRequest
     public function rules()
     {
         return [
+            'stasiun_id' => 'required',
             'tanggal' => 'required|date',
             'nama' => 'required|string',
             'tipe' => 'required|string',
             'merk' => 'required|string',
-            'lintang' => 'required|numeric',
-            'bujur' => 'required|numeric'
+            'desa' => 'required|string',
+            'kecamatan' => 'required|string',
+            'instansi' => 'required|string',
+            'alamat_instansi' => 'required|string',
+            'lingkungan' => 'required|string',
+            'orografi' => 'required|string',
+            'kepemilikan' => 'required|string',
+            'kondisi_alat' => 'required|string',
+            'pagar' => 'required|string',
+            'aktifitas' => 'required|string',
+            'sample_prakiraan' => 'required|string',
+            'dipasang_oleh' => 'required|string'
         ];
     }
 

@@ -71,16 +71,16 @@ class DashboardController extends Controller
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         $totalrains = DB::table('hujans')->count();
-        $totaltemps = DB::table('temperaturs')->count();
-        $totalwinds = DB::table('angins')->count();
-        $totalnisbis = DB::table('nisbis')->count();
+        // $totaltemps = DB::table('temperaturs')->count();
+        // $totalwinds = DB::table('angins')->count();
+        // $totalnisbis = DB::table('nisbis')->count();
 
         $data = [
             'tanahmiring' => $tanahmiring,
             'totalrains' => $totalrains,
-            'totaltemps' => $totaltemps,
-            'totalwinds' => $totalwinds,
-            'totalnisbis' => $totalnisbis,
+            // 'totaltemps' => $totaltemps,
+            // 'totalwinds' => $totalwinds,
+            // 'totalnisbis' => $totalnisbis,
             'metmerauke' => $metmerauke,
             'mimibaru' => $mimibaru,
             'okaba' => $okaba,

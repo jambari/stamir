@@ -16,12 +16,6 @@ Route::group([
     CRUD::resource('hujan', 'HujanCrudController');
     CRUD::resource('alat', 'AlatCrudController');
     CRUD::resource('calibration', 'CalibrationCrudController');
-    CRUD::resource('temperatur', 'TemperaturCrudController');
-    CRUD::resource('nisbi', 'NisbiCrudController');
-    CRUD::resource('angin', 'AnginCrudController');
-    CRUD::resource('penyinaran', 'PenyinaranCrudController');
-    CRUD::resource('gundul', 'GundulCrudController');
-    CRUD::resource('trumput', 'TrumputCrudController');
     //Import Excel Section
     Route::get('importpage-hujan', 'ImportCrudController@importpageHujan'); //import page for hujan
     Route::post('import-hujan', 'HujanCrudController@import'); //import data hujan route

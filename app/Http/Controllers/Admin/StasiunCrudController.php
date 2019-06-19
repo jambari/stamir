@@ -35,6 +35,31 @@ class StasiunCrudController extends CrudController
 
         // TODO: remove setFromDb() and manually define Fields and Columns
         //$this->crud->setFromDb();
+        $this->crud->addField([
+            'name' => 'kode_stasiun',
+            'label' => 'Kode Stasiun',
+            'type' => 'text'
+        ]);
+
+        //Jenis Stasiun
+        $this->crud->addField([
+            'name' => 'jenis_stasiun',
+            'label' => 'Jenis Stasiun',
+            'type' => 'select_from_array',
+            'options' => ["stasiun bmkg" => "Stasiun BMKG", "smpk" => "SMPK", "aws" => "AWS", "aaws"=> "AAWS", "arg" => "ARG", "pos hujan" => "Pos Hujan"],
+            'allows_null' => false,
+        ]);
+        // Nomor Stasiun
+        $this->crud->addField([
+            'name' => 'nomor_stasiun',
+            'label' => 'Nomor Stasiun',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'zom',
+            'label' => 'ZOM',
+            'type' => 'text'
+        ]);
 
         $this->crud->addField([
             'name' => 'provinsi',
@@ -46,18 +71,11 @@ class StasiunCrudController extends CrudController
         $this->crud->addField([
             'name' => 'kabupaten',
             'label' => 'Kabupaten',
-            'type' => 'select2_from_array',
-            'options' => [ 'merauke' => 'Merauke', 'timika' => 'Timika', 'boven digoel' => 'Boven Digoel', 'mappi' => 'Mappi', 'asmat' => 'Asmat', 'mimika' => 'Mimika' ],
-        ]);
-
-        $this->crud->addField([
-            'name' => 'kecamatan',
-            'label' => 'kecamatan',
             'type' => 'text',
         ]);
 
         $this->crud->addField([
-            'name' => 'nama',
+            'name' => 'nama_stasiun',
             'label' => 'Nama Stasiun',
             'type' => 'text',
         ]);
@@ -76,6 +94,24 @@ class StasiunCrudController extends CrudController
 
         //Add Columns
         $this->crud->addColumn([
+            'name' => 'nama_stasiun',
+            'label' => 'Nama Stasiun',
+        ]);
+        $this->crud->addColumn([
+            'name' => 'kode_stasiun',
+            'label' => 'Kode Stasiun',
+        ]);
+        $this->crud->addColumn([
+            'name' => 'jenis_stasiun',
+            'label' => 'Jenis Stasiun',
+        ]);
+        //zom
+        $this->crud->addColumn([
+            'name' => 'zom',
+            'label' => 'ZOM',
+        ]);
+
+        $this->crud->addColumn([
             'name' => 'provinsi',
             'label' => 'Provinsi',
         ]);
@@ -84,17 +120,7 @@ class StasiunCrudController extends CrudController
             'name' => 'kabupaten',
             'label' => 'Kabupaten',
         ]);
-
-        $this->crud->addColumn([
-            'name' => 'kecamatan',
-            'label' => 'kecamatan',
-        ]);
-
-        $this->crud->addColumn([
-            'name' => 'nama',
-            'label' => 'Nama Stasiun',
-        ]);
-
+        $this->crud->setColumnDetails('kabupaten', ['class' => 'text-primary']);
         $this->crud->addColumn([
             'name' => 'lintang',
             'label' => 'Lintang',

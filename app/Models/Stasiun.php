@@ -19,7 +19,7 @@ class Stasiun extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['provinsi', 'kabupaten', 'kecamatan', 'nama', 'lintang', 'bujur'];
+    protected $fillable = ['kode_stasiun','jenis_stasiun','nomor_stasiun','zom','nama_stasiun', 'provinsi', 'kabupaten', 'lintang', 'bujur'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -56,5 +56,9 @@ class Stasiun extends Model
     public function hujans()
     {
         return $this->hasMany('App\Models\Hujan');  
+    }
+    public function alat()
+    {
+        return $this->hasMany('App\Models\Alat');    
     }
 }
