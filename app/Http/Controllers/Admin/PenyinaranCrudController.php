@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use App\Imports\HujansImport;
+use App\Imports\PenyinaransImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
@@ -170,9 +170,9 @@ class PenyinaranCrudController extends CrudController
         // menaruh fil di folder public
         $file->move('uploads',$nama_file);
         //mengimport ke database
-        Excel::import(new HujansImport, public_path('/uploads/'.$nama_file));
+        Excel::import(new PenyinaransImport, public_path('/uploads/'.$nama_file));
         \Alert::success(trans('backpack::crud.insert_success'))->flash();
-        return redirect('/admin/hujan')->with('success', 'Data berhasil terimport!');
+        return redirect('/admin/penyinaran')->with('success', 'Data berhasil terimport!');
     }
 
     public function stasiunOptions(Request $request) {

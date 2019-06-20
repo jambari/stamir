@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use App\Imports\RainsImport;
+use App\Imports\ArahanginsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\RainRequest as StoreRequest;
-use App\Http\Requests\RainRequest as UpdateRequest;
+use App\Http\Requests\ArahanginRequest as StoreRequest;
+use App\Http\Requests\ArahanginRequest as UpdateRequest;
 use Illuminate\Http\Request;
 use Backpack\CRUD\CrudPanel;
 
-use App\Models\Rain;
+use App\Models\Arahangin;
 /**
  * Class HujanCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class RainCrudController extends CrudController
+class ArahanginCrudController extends CrudController
 {
     public function setup()
     {
@@ -27,9 +27,9 @@ class RainCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Rain');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/rain');
-        $this->crud->setEntityNameStrings('RR', 'semua RR');
+        $this->crud->setModel('App\Models\Arahangin');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/arahangin');
+        $this->crud->setEntityNameStrings('DDD', 'All DDD');
 
         /*
         |--------------------------------------------------------------------------
@@ -47,8 +47,8 @@ class RainCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'rain',
-            'label' => 'RR',
+            'name' => 'ddd',
+            'label' => 'DDD',
             'type' => 'text',
         ]);
 
@@ -70,8 +70,8 @@ class RainCrudController extends CrudController
                 'name' => 'tanggal',
                 'label' => 'Tanggal'
             ], [
-                'name' => 'rain',
-                'label' => 'RR'
+                'name' => 'ddd',
+                'label' => 'DDD'
             ], [
                 'name' => 'stasiun_id',
                 'label' => 'Stasiun'
@@ -101,9 +101,9 @@ class RainCrudController extends CrudController
         //filter hujan
         //
         $this->crud->addFilter([
-          'name' => 'rain',
+          'name' => 'ddd',
           'type' => 'range',
-          'label'=> 'RR',
+          'label'=> 'DDD',
           'label_from' => 'min ',
           'label_to' => 'max '
         ],
@@ -124,7 +124,7 @@ class RainCrudController extends CrudController
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/bolakering/ajax-stasiun-options'), // the ajax route
+        url('admin/arahangin/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });
@@ -170,9 +170,9 @@ class RainCrudController extends CrudController
         // menaruh fil di folder public
         $file->move('uploads',$nama_file);
         //mengimport ke database
-        Excel::import(new RainsImport, public_path('/uploads/'.$nama_file));
+        Excel::import(new ArahanginsImport, public_path('/uploads/'.$nama_file));
         \Alert::success(trans('backpack::crud.insert_success'))->flash();
-        return redirect('/admin/rain')->with('success', 'Data berhasil terimport!');
+        return redirect('/admin/penyinaran')->with('success', 'Data berhasil terimport!');
     }
 
     public function stasiunOptions(Request $request) {
