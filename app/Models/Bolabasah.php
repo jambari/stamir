@@ -19,7 +19,7 @@ class Bolabasah extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal','bola_basah','jam', 'alat_id', 'stasiun_id'];
+    protected $fillable = ['tanggal','bola_basah','jam', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

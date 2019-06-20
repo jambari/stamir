@@ -77,6 +77,10 @@ class Alat extends Model
     {
         return $this->hasMany('App\Models\Dewpoint');
     }
+    public function humidity()
+    {
+        return $this->hasMany('App\Models\Humidity');
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

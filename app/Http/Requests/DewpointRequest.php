@@ -29,7 +29,6 @@ class DewpointRequest extends FormRequest
             'tanggal' => 'required|date',
             'dew_point' => 'required|numeric',
             'jam' => 'required|string',
-            'alat_id' => 'required',
             'stasiun_id' => 'required'
         ];
     }

@@ -74,4 +74,12 @@ class Stasiun extends Model
     {
         return $this->hasMany('App\Models\Dewpoint');
     }
+    public function humidity()
+    {
+        return $this->hasMany('App\Models\Humidity');
+    }
+    public function rain()
+    {
+        return $this->hasMany('App\Models\Rain');
+    }
 }

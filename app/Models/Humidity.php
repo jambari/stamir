@@ -7,7 +7,7 @@ use Backpack\CRUD\CrudTrait;
 use App\Models\Stasiun;
 use App\Models\Alat;
 
-class Dewpoint extends Model
+class Humidity extends Model
 {
     use CrudTrait;
 
@@ -17,11 +17,11 @@ class Dewpoint extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'dewpoints';
+    protected $table = 'humidities';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal','dew_point','jam', 'stasiun_id'];
+    protected $fillable = ['tanggal','humidity','jam', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

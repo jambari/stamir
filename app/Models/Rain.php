@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Hujan extends Model
+class Rain extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Hujan extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'hujans';
+    protected $table = 'rains';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal', 'stasiun', 'total'];
+    protected $fillable = ['tanggal', 'rain', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -46,10 +46,12 @@ class Hujan extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-    public function getStasiunIdAttribute($value) {
-        $value = Stasiun::find($value);
-        return $value['nama'];
-    }
+    public function getStasiunIdAttribute ($value) {
+        $id = $value;
+        $stasiun = Stasiun::find($id);
+        $value = $stasiun['nama_stasiun'];
+        return ucwords($value);
+   }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

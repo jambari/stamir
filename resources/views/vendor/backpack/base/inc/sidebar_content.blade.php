@@ -14,6 +14,8 @@
 		<li><a href='{{ backpack_url('bolakering') }}'><i class='wi wi-humidity' style="margin-right: 0.8em;"></i> <span>Bola Kering</span></a></li>
 		<li><a href='{{ backpack_url('bolabasah') }}'><i class='wi wi-cloudy' style="margin-right: 0.8em;"></i> <span>Bola Basah</span></a></li>
 		<li><a href='{{ backpack_url('dewpoint') }}'><i class='fa fa-tag'></i> <span>Dew Point</span></a></li>
+		<li><a href='{{ backpack_url('humidity') }}'><i class='fa fa-tag'></i> <span>Kelembapan Udara</span></a></li>
+		<li><a href='{{ backpack_url('rain') }}'><i class='fa fa-tag'></i> <span>Hujan</span></a></li>
 	</ul>
 </li>
 

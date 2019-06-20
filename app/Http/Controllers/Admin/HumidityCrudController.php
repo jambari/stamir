@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\DewpointRequest as StoreRequest;
-use App\Http\Requests\DewpointRequest as UpdateRequest;
+use App\Http\Requests\HumidityRequest as StoreRequest;
+use App\Http\Requests\HumidityRequest as UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Alat;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +17,7 @@ use Backpack\CRUD\CrudPanel;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class DewpointCrudController extends CrudController
+class HumidityCrudController extends CrudController
 {
     public function setup()
     {
@@ -26,9 +26,9 @@ class DewpointCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Dewpoint');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/dewpoint');
-        $this->crud->setEntityNameStrings('Td', 'Td');
+        $this->crud->setModel('App\Models\Humidity');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/humidity');
+        $this->crud->setEntityNameStrings('Rh', 'Rh');
 
         /*
         |--------------------------------------------------------------------------
@@ -50,15 +50,15 @@ class DewpointCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'dew_point',
-            'label' => 'Td',
+            'name' => 'humidity',
+            'label' => 'Rh',
             'type' => 'text'
         ]);
 
 
         $this->crud->addColumn([
-            'name' => 'dew_point',
-            'label' => 'Td',
+            'name' => 'humidity',
+            'label' => 'Rh',
         ]);
 
 
@@ -141,9 +141,9 @@ class DewpointCrudController extends CrudController
          }); 
 
         $this->crud->addFilter([
-            'name' => 'dew_point',
+            'name' => 'humidity',
             'type' => 'range',
-            'label'=> 'Td',
+            'label'=> 'Rh',
             'label_from' => 'min ',
             'label_to' => 'max '
         ],
@@ -151,10 +151,10 @@ class DewpointCrudController extends CrudController
         function($value) { // if the filter is active
                     $range = json_decode($value);
                     if ($range->from) {
-                        $this->crud->addClause('where', 'dew_point', '>=', (float) $range->from);
+                        $this->crud->addClause('where', 'humidity', '>=', (float) $range->from);
                     }
                     if ($range->to) {
-                        $this->crud->addClause('where', 'dew_point', '<=', (float) $range->to);
+                        $this->crud->addClause('where', 'humidity', '<=', (float) $range->to);
                     }
         });
         //Jam
@@ -199,7 +199,7 @@ class DewpointCrudController extends CrudController
         //   'label'=> 'Alat',
         //   'placeholder' => 'Pilih Alat'
         // ],
-        // url('admin/dewpoint/ajax-alat-options'), // the ajax route
+        // url('admin/humidity/ajax-alat-options'), // the ajax route
         // function($value) { // if the filter is active
         //     $this->crud->addClause('where', 'alat_id', $value);
         // });
@@ -210,7 +210,7 @@ class DewpointCrudController extends CrudController
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/dewpoint/ajax-stasiun-options'), // the ajax route
+        url('admin/humidity/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });

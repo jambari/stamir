@@ -21,7 +21,7 @@ class Bolakering extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal','bola_kering','jam', 'alat_id', 'stasiun_id'];
+    protected $fillable = ['tanggal','bola_kering','jam', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

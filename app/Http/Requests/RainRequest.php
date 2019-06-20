@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class BolakeringRequest extends FormRequest
+class RainRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,7 @@ class BolakeringRequest extends FormRequest
     {
         return [
             'tanggal' => 'required|date',
-            'bola_kering' => 'required|numeric',
-            'jam' => 'required|string',
+            'rain' => 'required|numeric',
             'stasiun_id' => 'required'
         ];
     }

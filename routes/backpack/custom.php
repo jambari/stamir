@@ -27,6 +27,7 @@ Route::group([
     Route::get('bolakering/ajax-alat-options', 'BolakeringCrudController@alatOptions');
     Route::get('bolakering/ajax-stasiun-options', 'BolakeringCrudController@stasiunOptions');
     CRUD::resource('bolakering', 'BolakeringCrudController');
+
     Route::get('bolabasah/ajax-alat-options', 'BolabasahCrudController@alatOptions');
     Route::get('bolabasah/ajax-stasiun-options', 'BolabasahCrudController@stasiunOptions');
     CRUD::resource('bolabasah', 'BolabasahCrudController');
@@ -34,4 +35,11 @@ Route::group([
     Route::get('dewpoint/ajax-alat-options', 'DewpointCrudController@alatOptions');
     Route::get('dewpoint/ajax-stasiun-options', 'DewpointCrudController@stasiunOptions');
     CRUD::resource('dewpoint', 'DewpointCrudController');
+
+    Route::get('humidity/ajax-alat-options', 'HumidityCrudController@alatOptions');
+    Route::get('humidity/ajax-stasiun-options', 'HumidityCrudController@stasiunOptions');
+    CRUD::resource('humidity', 'HumidityCrudController');
+
+    Route::get('rain/ajax-stasiun-options', 'RainCrudController@stasiunOptions');
+    CRUD::resource('rain', 'RainCrudController');
 }); // this should be the absolute last line of this file

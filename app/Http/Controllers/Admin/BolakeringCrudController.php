@@ -28,7 +28,7 @@ class BolakeringCrudController extends CrudController
         */
         $this->crud->setModel('App\Models\Bolakering');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/bolakering');
-        $this->crud->setEntityNameStrings('bolakering', 'bolakering');
+        $this->crud->setEntityNameStrings('Tt', 'Tt');
 
         /*
         |--------------------------------------------------------------------------
@@ -51,14 +51,14 @@ class BolakeringCrudController extends CrudController
 
         $this->crud->addField([
             'name' => 'bola_kering',
-            'label' => 'Bola Kering',
+            'label' => 'Tt',
             'type' => 'text'
         ]);
 
 
         $this->crud->addColumn([
             'name' => 'bola_kering',
-            'label' => 'Bola Kering',
+            'label' => 'Tt',
         ]);
 
 
@@ -86,24 +86,24 @@ class BolakeringCrudController extends CrudController
             'label' => 'Jam',
         ]);
 
-        $this->crud->addField([
-           'label' => "Alat",
-           'type' => 'select2',
-           'name' => 'alat_id', // the db column for the foreign key
-           'entity' => 'alat', // the method that defines the relationship in your Model
-           'attribute' => 'nama', // foreign key attribute that is shown to user
-           'model' => "App\Models\Alat", // foreign key model
+        // $this->crud->addField([
+        //    'label' => "Alat",
+        //    'type' => 'select2',
+        //    'name' => 'alat_id', // the db column for the foreign key
+        //    'entity' => 'alat', // the method that defines the relationship in your Model
+        //    'attribute' => 'nama', // foreign key attribute that is shown to user
+        //    'model' => "App\Models\Alat", // foreign key model
 
-           // optional
-           'options'   => (function ($query) {
-                return $query->orderBy('nama', 'ASC')->get();
-            }), 
-        ]);
+        //    // optional
+        //    'options'   => (function ($query) {
+        //         return $query->orderBy('nama', 'ASC')->get();
+        //     }), 
+        // ]);
 
-        $this->crud->addColumn([
-            'name' => 'alat_id',
-            'label' => 'Alat',
-        ]);
+        // $this->crud->addColumn([
+        //     'name' => 'alat_id',
+        //     'label' => 'Alat',
+        // ]);
 
         $this->crud->addField([
            'label' => "Stasiun",
@@ -143,7 +143,7 @@ class BolakeringCrudController extends CrudController
         $this->crud->addFilter([
             'name' => 'bola_kering',
             'type' => 'range',
-            'label'=> 'Bola Kering',
+            'label'=> 'Tt',
             'label_from' => 'min ',
             'label_to' => 'max '
         ],
@@ -193,16 +193,16 @@ class BolakeringCrudController extends CrudController
              $this->crud->addClause('where', 'jam', $value);
         });
         // Alat
-        $this->crud->addFilter([ // select2_ajax filter
-          'name' => 'alat_id',
-          'type' => 'select2_ajax',
-          'label'=> 'Alat',
-          'placeholder' => 'Pilih Alat'
-        ],
-        url('admin/bolakering/ajax-alat-options'), // the ajax route
-        function($value) { // if the filter is active
-            $this->crud->addClause('where', 'alat_id', $value);
-        });
+        // $this->crud->addFilter([ // select2_ajax filter
+        //   'name' => 'alat_id',
+        //   'type' => 'select2_ajax',
+        //   'label'=> 'Alat',
+        //   'placeholder' => 'Pilih Alat'
+        // ],
+        // url('admin/bolakering/ajax-alat-options'), // the ajax route
+        // function($value) { // if the filter is active
+        //     $this->crud->addClause('where', 'alat_id', $value);
+        // });
         //filter stasiun
         $this->crud->addFilter([ // select2_ajax filter
           'name' => 'stasiun_id',

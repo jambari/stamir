@@ -29,7 +29,6 @@ class BolabasahRequest extends FormRequest
             'tanggal' => 'required|date',
             'bola_basah' => 'required|numeric',
             'jam' => 'required|string',
-            'alat_id' => 'required',
             'stasiun_id' => 'required'
         ];
     }

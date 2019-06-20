@@ -46,7 +46,7 @@
 
         <table id="crudTable" class="box table table-striped table-hover display responsive nowrap m-t-0" cellspacing="0">
             <thead>
-              <tr>
+              <tr class="">
                 {{-- Table columns --}}
                 @foreach ($crud->columns as $column)
                   <th

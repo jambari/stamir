@@ -7,8 +7,8 @@ use App\Imports\HujansImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\HujanRequest as StoreRequest;
-use App\Http\Requests\HujanRequest as UpdateRequest;
+use App\Http\Requests\RainRequest as StoreRequest;
+use App\Http\Requests\RainRequest as UpdateRequest;
 use Illuminate\Http\Request;
 use Backpack\CRUD\CrudPanel;
 
@@ -18,7 +18,7 @@ use App\Models\Hujan;
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class HujanCrudController extends CrudController
+class RainCrudController extends CrudController
 {
     public function setup()
     {
@@ -27,9 +27,9 @@ class HujanCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Hujan');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/hujan');
-        $this->crud->setEntityNameStrings('hujan', 'semua hujan');
+        $this->crud->setModel('App\Models\Rain');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/rain');
+        $this->crud->setEntityNameStrings('RR', 'semua RR');
 
         /*
         |--------------------------------------------------------------------------
@@ -47,27 +47,34 @@ class HujanCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-           'label' => "Stasiun",
-           'type' => 'text',
-           'name' => 'stasiun'// force the related options to be a custom query, instead of all(); you 
-        ]);
-
-        $this->crud->addField([
-            'name' => 'total',
+            'name' => 'rain',
             'label' => 'Curah Hujan',
             'type' => 'text',
         ]);
 
+        $this->crud->addField([
+           'label' => "Stasiun",
+           'type' => 'select2',
+           'name' => 'stasiun_id', // the db column for the foreign key
+           'entity' => 'stasiun', // the method that defines the relationship in your Model
+           'attribute' => 'nama_stasiun', // foreign key attribute that is shown to user
+           'model' => "App\Models\Stasiun", // foreign key model
+
+           // optional
+           'options'   => (function ($query) {
+                return $query->orderBy('nama_stasiun', 'ASC')->get();
+            }), // force the related options to be a custom query, instead of
+        ]);
         $columns = [
             [
                 'name' => 'tanggal',
                 'label' => 'Tanggal'
             ], [
-                'name' => 'stasiun',
+                'name' => 'stasiun_id',
                 'label' => 'Stasiun'
             ], [
-                'name' => 'total',
-                'label' => 'Jumlah Hujan'
+                'name' => 'rain',
+                'label' => 'Curah Hujan'
             ]
         ];
         $this->crud->addColumns($columns); 
@@ -94,9 +101,9 @@ class HujanCrudController extends CrudController
         //filter hujan
         //
         $this->crud->addFilter([
-          'name' => 'total',
+          'name' => 'rain',
           'type' => 'range',
-          'label'=> 'Hujan',
+          'label'=> 'RR',
           'label_from' => 'min ',
           'label_to' => 'max '
         ],
@@ -117,7 +124,7 @@ class HujanCrudController extends CrudController
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/humidity/ajax-stasiun-options'), // the ajax route
+        url('admin/bolakering/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });
@@ -166,5 +173,11 @@ class HujanCrudController extends CrudController
         Excel::import(new HujansImport, public_path('/uploads/'.$nama_file));
         \Alert::success(trans('backpack::crud.insert_success'))->flash();
         return redirect('/admin/hujan')->with('success', 'Data berhasil terimport!');
+    }
+
+    public function stasiunOptions(Request $request) {
+      $term = $request->input('term');
+      $options = DB::table('stasiuns')->where('nama_stasiun', 'like', '%'.$term.'%')->get()->pluck('nama_stasiun', 'id');
+      return $options;
     }
 }
