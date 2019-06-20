@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Stasiun extends Model
+class Penyinaran extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Stasiun extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'stasiuns';
+    protected $table = 'penyinarans';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['kode_stasiun','jenis_stasiun','nomor_stasiun','zom','nama_stasiun', 'provinsi', 'kabupaten', 'lintang', 'bujur'];
+    protected $fillable = ['tanggal', 'sss', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -46,44 +46,20 @@ class Stasiun extends Model
     | ACCESORS
     |--------------------------------------------------------------------------
     */
-
+    public function getStasiunIdAttribute ($value) {
+        $id = $value;
+        $stasiun = Stasiun::find($id);
+        $value = $stasiun['nama_stasiun'];
+        return ucwords($value);
+   }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
     |--------------------------------------------------------------------------
     */
 
-    public function hujans()
+    public function stasiun()
     {
-        return $this->hasMany('App\Models\Hujan');  
-    }
-    public function alat()
-    {
-        return $this->hasMany('App\Models\Alat');    
-    }
-    public function bolakering()
-    {
-        return $this->hasMany('App\Models\Bolakring');
-    }
-
-    public function bolabasah()
-    {
-        return $this->hasMany('App\Models\Bolabasah');
-    }
-    public function dewpoint()
-    {
-        return $this->hasMany('App\Models\Dewpoint');
-    }
-    public function humidity()
-    {
-        return $this->hasMany('App\Models\Humidity');
-    }
-    public function rain()
-    {
-        return $this->hasMany('App\Models\Rain');
-    }
-    public function penyinaran()
-    {
-        return $this->hasMany('App\Models\Penyinaran');
+        return $this->belongsTo('App\Models\Stasiun');
     }
 }

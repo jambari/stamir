@@ -16,6 +16,7 @@
 		<li><a href='{{ backpack_url('dewpoint') }}'><i class='fa fa-tag'></i> <span>Dew Point</span></a></li>
 		<li><a href='{{ backpack_url('humidity') }}'><i class='fa fa-tag'></i> <span>Kelembapan Udara</span></a></li>
 		<li><a href='{{ backpack_url('rain') }}'><i class='fa fa-tag'></i> <span>Hujan</span></a></li>
+		<li><a href='{{ backpack_url('penyinaran') }}'><i class='fa fa-tag'></i> <span>Penyinaran</span></a></li>
 	</ul>
 </li>
 

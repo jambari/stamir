@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRainTable extends Migration
+class CreateSunraysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateRainTable extends Migration
      */
     public function up()
     {
-        Schema::create('rains', function (Blueprint $table) {
+        Schema::create('penyinarans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('tanggal');
-            $table->float('rain')->nullable();
+            $table->float('sss')->nullable();
             $table->integer('stasiun_id')->unsigned()->nullable();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ class CreateRainTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rains');
+        Schema::dropIfExists('penyinarans');
     }
 }
