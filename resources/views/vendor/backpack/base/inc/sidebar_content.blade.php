@@ -11,8 +11,8 @@
 <li class="treeview">
 	<a href="#"><i class="fa fa-list"></i> <span>Data Iklim</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
-		<li><a href='{{ backpack_url('bolakering') }}'><i class='wi wi-humidity' style="margin-right: 0.8em;"></i> <span>Bola Kering </span> <span class="label label-success pull-right" >Tt</span></a></li>
-		<li><a href='{{ backpack_url('bolabasah') }}'><i class='wi wi-cloudy' style="margin-right: 0.8em;"></i> <span>Bola Basah </span><span class="label label-success pull-right" >Tw</span></a></li>
+		<li><a href='{{ backpack_url('bolakering') }}'><i class='fa fa-tag'></i> <span>Bola Kering </span> <span class="label label-success pull-right" >Tt</span></a></li>
+		<li><a href='{{ backpack_url('bolabasah') }}'><i class='fa fa-tag'></i> <span>Bola Basah </span><span class="label label-success pull-right" >Tw</span></a></li>
 		<li><a href='{{ backpack_url('dewpoint') }}'><i class='fa fa-tag'></i> <span>Dew Point</span><span class="label label-success pull-right" >Td</span></a></li>
 		<li><a href='{{ backpack_url('humidity') }}'><i class='fa fa-tag'></i> <span>Kelembapan Udara</span><span class="label label-success pull-right" >Rh</span></a></li>
 		<li><a href='{{ backpack_url('rain') }}'><i class='fa fa-tag'></i> <span>Hujan</span><span class="label label-success pull-right" >RR</span></a></li>
@@ -20,6 +20,7 @@
 		<li><a href='{{ backpack_url('arahangin') }}'><i class='fa fa-tag'></i> <span>Arah Angin</span><span class="label label-success pull-right" >DDD</span></a></li>
 		<li><a href='{{ backpack_url('kecangin') }}'><i class='fa fa-tag'></i> <span>Kecepatan Angin</span><span class="label label-success pull-right" >FFF</span></a></li>
 		<li><a href='{{ backpack_url('tekanan') }}'><i class='fa fa-tag'></i> <span>Tekanan</span><span class="label label-success pull-right" >QFF</span></a></li>
+		<li><a href='{{ backpack_url('penguapan') }}'><i class='fa fa-tag'></i> <span>Penguapan</span><span class="label label-success pull-right" >EEE</span></a></li>
 	</ul>
 </li>
 

@@ -54,4 +54,7 @@ Route::group([
 
     Route::get('tekanan/ajax-stasiun-options', 'TekananCrudController@stasiunOptions');
     CRUD::resource('tekanan', 'TekananCrudController');
+
+    Route::get('penguapan/ajax-stasiun-options', 'PenguapanCrudController@stasiunOptions');
+    CRUD::resource('penguapan', 'PenguapanCrudController');
 }); // this should be the absolute last line of this file
