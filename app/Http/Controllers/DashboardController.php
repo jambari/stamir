@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Hujan;
+use App\Models\Rain;
 
 class DashboardController extends Controller
 {
@@ -13,64 +13,64 @@ class DashboardController extends Controller
     {
     
     	//Ambil data hujan 30 hari terakhir di Stasiun Tanah Miring
-    	$tanahmiring = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%staklim%')
+    	$tanahmiring = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%staklim%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Met Merauke
-        $metmerauke = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%met.merauke%')
+        $metmerauke = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%met.merauke%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun mimibaru
-        $mimibaru = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%mimibaru%')
+        $mimibaru = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%mimibaru%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Okaba
-        $okaba = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%okaba%')
+        $okaba = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%okaba%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Agats
-        $agats = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%agats%')
+        $agats = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%agats%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Atsj
-        $atsj = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%atsj%')
+        $atsj = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%atsj%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Wapeko
-        $wapeko = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%wapeko%')
+        $wapeko = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%wapeko%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Wapeko
-        $wonorejo = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%wonorejo%')
+        $wonorejo = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%wonorejo%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Iwaka
-        $iwaka = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%iwaka%')
+        $iwaka = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%iwaka%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Kepi
-        $kepi = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%kepi%')
+        $kepi = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%kepi%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
-        $amunkay = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%amun%')
+        $amunkay = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%amun%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
-        $semangga = Hujan::select(['tanggal','total'])
-                    ->where('stasiun', 'like', '%semangga%')
+        $semangga = Rain::select(['tanggal','rain'])
+                    ->where('stasiun_id', 'like', '%semangga%')
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
-        $totalrains = DB::table('hujans')->count();
+        $totalrains = DB::table('rains')->count();
         // $totaltemps = DB::table('temperaturs')->count();
         // $totalwinds = DB::table('angins')->count();
         // $totalnisbis = DB::table('nisbis')->count();

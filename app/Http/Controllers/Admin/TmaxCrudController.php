@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use App\Imports\TekanansImport;
+use App\Imports\TmaxsImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\TekananRequest as StoreRequest;
-use App\Http\Requests\TekananRequest as UpdateRequest;
+use App\Http\Requests\TmaxRequest as StoreRequest;
+use App\Http\Requests\TmaxRequest as UpdateRequest;
 use Illuminate\Http\Request;
 use Backpack\CRUD\CrudPanel;
 
-use App\Models\Tekanan;
+use App\Models\Tmax;
 /**
  * Class HujanCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class TekananCrudController extends CrudController
+class TmaxCrudController extends CrudController
 {
     public function setup()
     {
@@ -27,9 +27,9 @@ class TekananCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Tekanan');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/tekanan');
-        $this->crud->setEntityNameStrings('PPP', 'semua PPP');
+        $this->crud->setModel('App\Models\tmax');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/tmax');
+        $this->crud->setEntityNameStrings('Tmax', 'semua Tmax');
 
         /*
         |--------------------------------------------------------------------------
@@ -47,8 +47,8 @@ class TekananCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'qff',
-            'label' => 'PPP',
+            'name' => 'tmax',
+            'label' => 'Tmax',
             'type' => 'text',
         ]);
 
@@ -70,8 +70,8 @@ class TekananCrudController extends CrudController
                 'name' => 'tanggal',
                 'label' => 'Tanggal'
             ], [
-                'name' => 'qff',
-                'label' => 'PPP'
+                'name' => 'tmax',
+                'label' => 'Tmax'
             ], [
                 'name' => 'stasiun_id',
                 'label' => 'Stasiun'
@@ -101,9 +101,9 @@ class TekananCrudController extends CrudController
         //filter hujan
         //
         $this->crud->addFilter([
-          'name' => 'qff',
+          'name' => 'tmax',
           'type' => 'range',
-          'label'=> 'PPP',
+          'label'=> 'Tmax',
           'label_from' => 'min ',
           'label_to' => 'max '
         ],
@@ -124,7 +124,7 @@ class TekananCrudController extends CrudController
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/tekanan/ajax-stasiun-options'), // the ajax route
+        url('admin/tmax/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });
@@ -170,9 +170,9 @@ class TekananCrudController extends CrudController
         // menaruh fil di folder public
         $file->move('uploads',$nama_file);
         //mengimport ke database
-        Excel::import(new TekanansImport, public_path('/uploads/'.$nama_file));
+        Excel::import(new TmaxsImport, public_path('/uploads/'.$nama_file));
         \Alert::success(trans('backpack::crud.insert_success'))->flash();
-        return redirect('/admin/tekanan')->with('success', 'Data berhasil terimport!');
+        return redirect('/admin/tmax')->with('success', 'Data berhasil terimport!');
     }
 
     public function stasiunOptions(Request $request) {

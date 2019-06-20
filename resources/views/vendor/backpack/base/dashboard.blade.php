@@ -93,7 +93,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['tanahmiring'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or ''}}",
                                 @endforeach
                             ]
                             }
@@ -143,7 +143,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['metmerauke'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or ' ' }}",
                                 @endforeach
                             ]
                             }
@@ -196,7 +196,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['okaba'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or ' ' }}",
                                 @endforeach
                             ]
                             }
@@ -235,7 +235,7 @@
                         data: {
                         labels: [
                                 @foreach($data['mimibaru'] as $hujan)
-                                    "{{ $hujan['tanggal'] }}",
+                                    "{{ $hujan['tanggal'] or ' '}}",
                                 @endforeach
                             ],
                         datasets: [
@@ -246,7 +246,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['mimibaru'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -299,7 +299,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['agats'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -349,7 +349,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['atsj'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -402,7 +402,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['wapeko'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -452,7 +452,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['wonorejo'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -504,7 +504,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['iwaka'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -554,7 +554,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['kepi'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -606,7 +606,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['amunkay'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or '' }}",
                                 @endforeach
                             ]
                             }
@@ -656,7 +656,7 @@
                             fill: true,
                             data: [
                                 @foreach($data['semangga'] as $hujan)
-                                    "{{ $hujan['total'] }}",
+                                    "{{ $hujan['rain'] or ' ' }}",
                                 @endforeach
                             ]
                             }
