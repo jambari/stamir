@@ -19,6 +19,7 @@
 		<li><a href='{{ backpack_url('penyinaran') }}'><i class='fa fa-tag'></i> <span>Penyinaran </span><span class="label label-success pull-right" >SSS</span></a></li>
 		<li><a href='{{ backpack_url('arahangin') }}'><i class='fa fa-tag'></i> <span>Arah Angin</span><span class="label label-success pull-right" >DDD</span></a></li>
 		<li><a href='{{ backpack_url('kecangin') }}'><i class='fa fa-tag'></i> <span>Kecepatan Angin</span><span class="label label-success pull-right" >FFF</span></a></li>
+		<li><a href='{{ backpack_url('tekanan') }}'><i class='fa fa-tag'></i> <span>Tekanan</span><span class="label label-success pull-right" >QFF</span></a></li>
 	</ul>
 </li>
 
