@@ -27,5 +27,7 @@ Route::group([
     Route::get('bolakering/ajax-alat-options', 'BolakeringCrudController@alatOptions');
     Route::get('bolakering/ajax-stasiun-options', 'BolakeringCrudController@stasiunOptions');
     CRUD::resource('bolakering', 'BolakeringCrudController');
-
+    Route::get('bolabasah/ajax-alat-options', 'BolabasahCrudController@alatOptions');
+    Route::get('bolabasah/ajax-stasiun-options', 'BolabasahCrudController@stasiunOptions');
+    CRUD::resource('bolabasah', 'BolabasahCrudController');
 }); // this should be the absolute last line of this file

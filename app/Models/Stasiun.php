@@ -65,4 +65,9 @@ class Stasiun extends Model
     {
         return $this->hasMany('App\Models\Bolakring');
     }
+
+    public function bolabasah()
+    {
+        return $this->hasMany('App\Models\Bolabasah');
+    }
 }

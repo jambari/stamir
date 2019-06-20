@@ -60,12 +60,17 @@ class Alat extends Model
 
     public function bolakering()
     {
-        return $this->hasMany('App\Models\Bolakring');
+        return $this->hasMany('App\Models\Bolakering');
     }
 
     public function stasiun()
     {
         return $this->belongsTo('App\Models\Stasiun');
+    }
+
+    public function bolabasah()
+    {
+        return $this->hasMany('App\Models\Bolabasah');
     }
     /*
     |--------------------------------------------------------------------------

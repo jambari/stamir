@@ -11,7 +11,8 @@
 <li class="treeview">
 	<a href="#"><i class="fa fa-list"></i> <span>Data Iklim</span> <i class="fa fa-angle-left pull-right"></i></a>
 	<ul class="treeview-menu">
-		<li><a href='{{ backpack_url('bolakering') }}'><i class='wi wi-humidity'></i> <span>Bola Kering</span></a></li>
+		<li><a href='{{ backpack_url('bolakering') }}'><i class='wi wi-humidity' style="margin-right: 0.8em;"></i> <span>Bola Kering</span></a></li>
+		<li><a href='{{ backpack_url('bolabasah') }}'><i class='wi wi-cloudy' style="margin-right: 0.8em;"></i> <span>Bola Basah</span></a></li>
 	</ul>
 </li>
 
@@ -25,4 +26,5 @@
 </li>
 
 {{-- <li><a href="{{ backpack_url('elfinder') }}"><i class="fa fa-files-o"></i> <span>{{ trans('backpack::crud.file_manager') }}</span></a></li> --}}
+
 

@@ -5,19 +5,19 @@ namespace App\Http\Controllers\Admin;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\BolakeringRequest as StoreRequest;
-use App\Http\Requests\BolakeringRequest as UpdateRequest;
+use App\Http\Requests\BolabasahRequest as StoreRequest;
+use App\Http\Requests\BolabasahRequest as UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Alat;
 use Illuminate\Support\Facades\DB;
 use Backpack\CRUD\CrudPanel;
 
 /**
- * Class BolakeringsCrudController
+ * Class BolabasahsCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class BolakeringCrudController extends CrudController
+class BolabasahCrudController extends CrudController
 {
     public function setup()
     {
@@ -26,9 +26,9 @@ class BolakeringCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Bolakering');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/bolakering');
-        $this->crud->setEntityNameStrings('bolakering', 'bolakering');
+        $this->crud->setModel('App\Models\Bolabasah');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/bolabasah');
+        $this->crud->setEntityNameStrings('bolabasah', 'bolabasah');
 
         /*
         |--------------------------------------------------------------------------
@@ -50,15 +50,15 @@ class BolakeringCrudController extends CrudController
         ]);
 
         $this->crud->addField([
-            'name' => 'bola_kering',
-            'label' => 'Bola Kering',
+            'name' => 'bola_basah',
+            'label' => 'Bola basah',
             'type' => 'text'
         ]);
 
 
         $this->crud->addColumn([
-            'name' => 'bola_kering',
-            'label' => 'Bola Kering',
+            'name' => 'bola_basah',
+            'label' => 'Bola basah',
         ]);
 
 
@@ -123,7 +123,7 @@ class BolakeringCrudController extends CrudController
             'name' => 'stasiun_id',
             'label' => 'Stasiun',
         ]);
-        // add asterisk for fields that are required in BolakeringsRequest
+        // add asterisk for fields that are required in BolabasahsRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
         $this->crud->enableExportButtons();
@@ -141,9 +141,9 @@ class BolakeringCrudController extends CrudController
          }); 
 
         $this->crud->addFilter([
-            'name' => 'bola_kering',
+            'name' => 'bola_basah',
             'type' => 'range',
-            'label'=> 'Bola Kering',
+            'label'=> 'Bola basah',
             'label_from' => 'min ',
             'label_to' => 'max '
         ],
@@ -151,10 +151,10 @@ class BolakeringCrudController extends CrudController
         function($value) { // if the filter is active
                     $range = json_decode($value);
                     if ($range->from) {
-                        $this->crud->addClause('where', 'bola_kering', '>=', (float) $range->from);
+                        $this->crud->addClause('where', 'bola_basah', '>=', (float) $range->from);
                     }
                     if ($range->to) {
-                        $this->crud->addClause('where', 'bola_kering', '<=', (float) $range->to);
+                        $this->crud->addClause('where', 'bola_basah', '<=', (float) $range->to);
                     }
         });
         //Jam
@@ -199,7 +199,7 @@ class BolakeringCrudController extends CrudController
           'label'=> 'Alat',
           'placeholder' => 'Pilih Alat'
         ],
-        url('admin/bolakering/ajax-alat-options'), // the ajax route
+        url('admin/bolabasah/ajax-alat-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'alat_id', $value);
         });
@@ -210,7 +210,7 @@ class BolakeringCrudController extends CrudController
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/bolakering/ajax-stasiun-options'), // the ajax route
+        url('admin/bolabasah/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });
