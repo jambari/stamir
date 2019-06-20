@@ -72,6 +72,11 @@ class Alat extends Model
     {
         return $this->hasMany('App\Models\Bolabasah');
     }
+
+    public function dewpoint()
+    {
+        return $this->hasMany('App\Models\Dewpoint');
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS

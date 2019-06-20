@@ -30,4 +30,8 @@ Route::group([
     Route::get('bolabasah/ajax-alat-options', 'BolabasahCrudController@alatOptions');
     Route::get('bolabasah/ajax-stasiun-options', 'BolabasahCrudController@stasiunOptions');
     CRUD::resource('bolabasah', 'BolabasahCrudController');
+
+    Route::get('dewpoint/ajax-alat-options', 'DewpointCrudController@alatOptions');
+    Route::get('dewpoint/ajax-stasiun-options', 'DewpointCrudController@stasiunOptions');
+    CRUD::resource('dewpoint', 'DewpointCrudController');
 }); // this should be the absolute last line of this file
