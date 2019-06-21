@@ -1,24 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use Backpack\CRUD\app\Http\Controllers\CrudController;
-use App\Imports\TmaxsImport;
-use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Reader;
 // VALIDATION: change the requests to match your own file names if you need form validation
-use App\Http\Requests\TmaxRequest as StoreRequest;
-use App\Http\Requests\TmaxRequest as UpdateRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\TrumputRequest as StoreRequest;
+use App\Http\Requests\TrumputRequest as UpdateRequest;
 use Backpack\CRUD\CrudPanel;
-
-use App\Models\Tmax;
 /**
- * Class HujanCrudController
+ * Class TrumputCrudController
  * @package App\Http\Controllers\Admin
  * @property-read CrudPanel $crud
  */
-class TmaxCrudController extends CrudController
+class TrumputCrudController extends CrudController
 {
     public function setup()
     {
@@ -27,29 +20,51 @@ class TmaxCrudController extends CrudController
         | CrudPanel Basic Information
         |--------------------------------------------------------------------------
         */
-        $this->crud->setModel('App\Models\Tmax');
-        $this->crud->setRoute(config('backpack.base.route_prefix') . '/tmax');
-        $this->crud->setEntityNameStrings('Tmax', 'semua Tmax');
-
+        $this->crud->setModel('App\Models\Trumput');
+        $this->crud->setRoute(config('backpack.base.route_prefix') . '/trumput');
+        $this->crud->setEntityNameStrings('tanah berumput', 'tanah berumput');
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
+        // TODO: remove setFromDb() and manually define Fields and Columns
+        $this->crud->setFromDb();
         $this->crud->addField([
             'name' => 'tanggal',
             'label' => 'Tanggal',
-            'type' => 'date_picker',
-            'date_picker_options' => [
-              'todayBtn' => 'linked',
-              'format' => 'dd-mm-yyyy',
-           ],
+            'type' => 'date',
         ]);
-
         $this->crud->addField([
-            'name' => 'tmax',
-            'label' => 'Tmax',
-            'type' => 'text',
+            'name' => 'lima',
+            'label' => '5cm',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'sepuluh',
+            'label' => '10cm',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'duapuluh',
+            'label' => '20cm',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'limapuluh',
+            'label' => '50cm',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'seratus',
+            'label' => '100cm',
+            'type' => 'text'
+        ]);
+        $this->crud->addField([
+            'name' => 'jam',
+            'label' => 'jam',
+            'type' => 'select_from_array',
+            'options' => ['7' => '07.00 W.S', '13' => '13.00 W.S', '18'=>'18.00 W.S']
         ]);
 
         $this->crud->addField([
@@ -65,27 +80,19 @@ class TmaxCrudController extends CrudController
                 return $query->orderBy('nama_stasiun', 'ASC')->get();
             }), // force the related options to be a custom query, instead of
         ]);
-        $columns = [
-            [
-                'name' => 'tanggal',
-                'label' => 'Tanggal'
-            ], [
-                'name' => 'tmax',
-                'label' => 'Tmax'
-            ], [
-                'name' => 'stasiun_id',
-                'label' => 'Stasiun'
-            ]
-        ];
-        $this->crud->addColumns($columns); 
+        $this->crud->addColumns(['tanggal','lima','sepuluh','duapuluh',
+            'limapuluh', 'seratus'
+        ]);
 
-        // TODO: remove setFromDb() and manually define Fields and Columns
-        //$this->crud->setFromDb();
-
-        // add asterisk for fields that are required in HujanRequest
+        $this->crud->setColumnDetails('tanggal',['label' => 'Tanggal']);
+        $this->crud->setColumnDetails('lima',['label' => '5cm']);
+        $this->crud->setColumnDetails('sepuluh',['label' => '10cm']);
+        $this->crud->setColumnDetails('duapuluh',['label' => '20cm']);
+        $this->crud->setColumnDetails('limapuluh',['label' => '50cm']);
+        $this->crud->setColumnDetails('seratus',['label' => '100cm']);
+        // add asterisk for fields that are required in TrumputRequest
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
-
         $this->crud->addFilter([ // daterange filter
            'type' => 'date_range',
            'name' => 'tanggal',
@@ -98,40 +105,17 @@ class TmaxCrudController extends CrudController
            $this->crud->addClause('where', 'tanggal', '<=', $dates->to . ' 23:59:59');
          });
 
-        //filter hujan
-        //
-        $this->crud->addFilter([
-          'name' => 'tmax',
-          'type' => 'range',
-          'label'=> 'Tmax',
-          'label_from' => 'min ',
-          'label_to' => 'max '
-        ],
-        true,
-        function($value) { // if the filter is active
-                    $range = json_decode($value);
-                    if ($range->from) {
-                        $this->crud->addClause('where', 'total', '>=', (float) $range->from);
-                    }
-                    if ($range->to) {
-                        $this->crud->addClause('where', 'total', '<=', (float) $range->to);
-                    }
-        });
-// filter nama stasiun
-        $this->crud->addFilter([ // select2_ajax filter
+
+          $this->crud->addFilter([ // select2_ajax filter
           'name' => 'stasiun_id',
           'type' => 'select2_ajax',
           'label'=> 'Stasiun',
           'placeholder' => 'Pilih Stasiun'
         ],
-        url('admin/tmax/ajax-stasiun-options'), // the ajax route
+        url('admin/tekanan/ajax-stasiun-options'), // the ajax route
         function($value) { // if the filter is active
             $this->crud->addClause('where', 'stasiun_id', $value);
         });
-        //export
-        $this->crud->enableExportButtons();
-
-    $this->crud->orderBy('id', 'desc');
     }
 
     public function store(StoreRequest $request)
@@ -170,9 +154,9 @@ class TmaxCrudController extends CrudController
         // menaruh fil di folder public
         $file->move('uploads',$nama_file);
         //mengimport ke database
-        Excel::import(new TmaxsImport, public_path('/uploads/'.$nama_file));
+        Excel::import(new TrumputsImport, public_path('/uploads/'.$nama_file));
         \Alert::success(trans('backpack::crud.insert_success'))->flash();
-        return redirect('/admin/tmax')->with('success', 'Data berhasil terimport!');
+        return redirect('/admin/trumput')->with('success', 'Data berhasil terimport!');
     }
 
     public function stasiunOptions(Request $request) {

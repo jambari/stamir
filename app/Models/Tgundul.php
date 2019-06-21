@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;
 
-class Arahangin extends Model
+class Tgundul extends Model
 {
     use CrudTrait;
 
@@ -15,11 +15,11 @@ class Arahangin extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'ddds';
+    protected $table = 'tgunduls';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     // protected $guarded = ['id'];
-    protected $fillable = ['tanggal', 'ddd', 'stasiun_id'];
+    protected $fillable = ['tanggal','lima','sepuluh','duapuluh','limapuluh','seratus', 'jam', 'stasiun_id'];
     // protected $hidden = [];
     // protected $dates = [];
 

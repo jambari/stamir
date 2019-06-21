@@ -57,7 +57,10 @@ class Tmax extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
+    public function getTanggalAttribute($value)
+    {
+        return date("d-m-Y", strtotime($value));
+    }
     public function stasiun()
     {
         return $this->belongsTo('App\Models\Stasiun');

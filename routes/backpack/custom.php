@@ -60,4 +60,16 @@ Route::group([
 
     Route::get('tmax/ajax-stasiun-options', 'TmaxCrudController@stasiunOptions');
     CRUD::resource('tmax', 'TmaxCrudController');
+
+    Route::get('tmin/ajax-stasiun-options', 'TminCrudController@stasiunOptions');
+    CRUD::resource('tmin', 'TminCrudController');
+
+    Route::get('radiasi/ajax-stasiun-options', 'RadiasiCrudController@stasiunOptions');
+    CRUD::resource('radiasi', 'RadiasiCrudController');
+
+    Route::get('trumput/ajax-stasiun-options', 'TrumputCrudController@stasiunOptions');
+    CRUD::resource('trumput', 'TrumputCrudController');
+
+    Route::get('tgundul/ajax-stasiun-options', 'TgundulCrudController@stasiunOptions');
+    CRUD::resource('tgundul', 'TgundulCrudController');
 }); // this should be the absolute last line of this file

@@ -78,6 +78,10 @@ class Stasiun extends Model
     {
         return $this->hasMany('App\Models\Humidity');
     }
+    public function kecangin()
+    {
+        return $this->hasMany('App\Models\Kecangin');
+    }
     public function rain()
     {
         return $this->hasMany('App\Models\Rain');
@@ -97,5 +101,22 @@ class Stasiun extends Model
     public function penguapan()
     {
         return $this->hasMany('App\Models\Penguapan');
+    }
+
+    public function tmax()
+    {
+        return $this->hasMany('App\Models\Tmax');
+    }
+    public function tmin()
+    {
+        return $this->hasMany('App\Models\Tmin');
+    }
+    public function radiasi()
+    {
+        return $this->hasMany('App\Models\Radiasi');
+    }
+    public function trumput()
+    {
+        return $this->hasMany('App\Models\Trumput');
     }
 }

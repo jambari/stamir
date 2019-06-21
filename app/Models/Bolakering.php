@@ -141,7 +141,10 @@ class Bolakering extends Model
     {
         return $this->belongsTo('App\Models\Stasiun');
     }
-
+    public function getTanggalAttribute($value)
+    {
+        return date("d-m-Y", strtotime($value));
+    }
     public function alat()
     {
         return $this->belongsTo('App\Models\Alat');

@@ -146,6 +146,10 @@ class Humidity extends Model
     {
         return $this->belongsTo('App\Models\Alat');
     }
+    public function getTanggalAttribute($value)
+    {
+        return date("d-m-Y", strtotime($value));
+    }
     /*
     |--------------------------------------------------------------------------
     | MUTATORS
