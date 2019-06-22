@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
 // Route::get('/admin/login', function () {
 //     return redirect('/admin');
