@@ -21,7 +21,7 @@ class RainsImport implements ToModel
         //   'hujan' => 'required'|'mimes:xls,xlsx,ods,ots,csv'
         // );
 
-        return new Hujan([
+        return new Rain([
            'tanggal'     => $row[0],
            'rain'    => $row[1],
            'stasiun_id' => $row[2]
