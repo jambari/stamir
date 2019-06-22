@@ -14,7 +14,7 @@ class DashboardController extends Controller
     
     	//Ambil data hujan 30 hari terakhir di Stasiun Tanah Miring
     	$tanahmiring = Rain::select(['tanggal','rain'])
-                    ->where('stasiun_id', 'like', '%staklim%')
+                    ->where('stasiun_id', '=', 3)
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         //Ambil data hujan 30 hari terakhir di Stasiun Met Merauke
@@ -71,16 +71,16 @@ class DashboardController extends Controller
                     ->orderBy('tanggal','desc')
                     ->take(30)->get();
         $totalrains = DB::table('rains')->count();
-        // $totaltemps = DB::table('temperaturs')->count();
-        // $totalwinds = DB::table('angins')->count();
-        // $totalnisbis = DB::table('nisbis')->count();
+        $totaltemps = DB::table('tmaxes')->count();
+        $totalwinds = DB::table('ddds')->count();
+        $totalnisbis = DB::table('humidities')->count();
 
         $data = [
             'tanahmiring' => $tanahmiring,
             'totalrains' => $totalrains,
-            // 'totaltemps' => $totaltemps,
-            // 'totalwinds' => $totalwinds,
-            // 'totalnisbis' => $totalnisbis,
+            'totaltemps' => $totaltemps,
+            'totalwinds' => $totalwinds,
+            'totalnisbis' => $totalnisbis,
             'metmerauke' => $metmerauke,
             'mimibaru' => $mimibaru,
             'okaba' => $okaba,

@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/admin');
-});
+Route::get('/', 'HomeController@index');
+
+// Route::get('/admin/login', function () {
+//     return redirect('/admin');
+// });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 
 Route::get('/admin/dashboard', 'DashboardController@index'); //to dashboard page
 //Route::get('importpage', 'HomeController@importpage');
