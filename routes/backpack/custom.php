@@ -20,8 +20,8 @@ Route::group([
 
 
     //Import Excel Section
-    Route::get('importpage-hujan', 'ImportCrudController@importpageHujan'); //import page for hujan
-    Route::post('import-hujan', 'HujanCrudController@import'); //import data hujan route
+    Route::get('importpage-rain', 'ImportCrudController@importpageHujan'); //import page for hujan
+    Route::post('import-rain', 'RainCrudController@import'); //import data hujan route
 
     //Bola Kering
     Route::get('bolakering/ajax-alat-options', 'BolakeringCrudController@alatOptions');
